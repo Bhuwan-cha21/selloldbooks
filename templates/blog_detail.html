@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%block title%}
+    <title>blog details</title>
+{% endblock title%}
+{%block body%}
+    {% for message in messages %}
+    {{message}} <br>
+    
+{%endfor%}
+<br> {{blog.title}}<br>
+{{blog.dsc}}
+<br>{{blog.date}}
+<br>
+{{blog.user_id.username}}<br>
+
+{% if user.id == blog.user_id.id %}
+    <a href="blog_delete/{{blog.id}}" >Delete blog</a>
+    <a href='blog_edit/{{blog.id}}'>Edit Blog</a>
+{% endif %}
+<br>
+{%endblock body%}

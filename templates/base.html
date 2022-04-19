@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    {% block  title %}
+        <title>Home</title>
+    {% endblock title %}
+</head>
+<body>
+        <a href="/">Home</a>
+        {% if user.is_authenticated%}
+            <a href='logout' >{{user.first_name}} Logout</a>
+            <a href='/post_blog'>Post Blog</a>
+         {%else%}
+                <a href="register">register</a>
+                <a href="login">login</a>
+        {%endif%}
+        <br>
+        {%for message in messages%}
+            {{message}}
+        {%endfor%}
+        
+    {%block body%}
+        {% load static %}
+            <img src="{% static 'img/wall.jpg' %}" style='width:1000px;height:500px;'>
+
+        {% for blog in blogs%}
+           <br> {{blog.title}}<br>
+           {{blog.dsc}}
+           <br>{{blog.date}}
+           <br>
+           {{blog.user_id.username}}<br>
+           <a href="blog_detail/{{blog.id}}" >Continue reading</a>
+           <br>
+        {%endfor%}
+    {%endblock body%}
+</body>
+</html>

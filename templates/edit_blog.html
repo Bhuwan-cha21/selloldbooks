@@ -1,0 +1,5 @@
+<form method="POST" class='my-3'>
+    {% csrf_token %}
+    {{edit_blog.as_p}}
+    <input type='submit' value='Edit' class='btn btn-primary'>
+</form>
